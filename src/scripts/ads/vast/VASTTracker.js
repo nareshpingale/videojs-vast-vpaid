@@ -110,9 +110,11 @@ VASTTracker.prototype.trackProgress = function trackProgress(newProgressInMs) {
 
     if (!firstQuartile.tracked) {
       trackQuartile('firstQuartile', progress);
-    } else if (!midpoint.tracked) {
+    } 
+    if (!midpoint.tracked) {
       trackQuartile('midpoint', progress);
-    } else if (!thirdQuartile.tracked){
+    } 
+    if (!thirdQuartile.tracked){
       trackQuartile('thirdQuartile', progress);
     }
 
