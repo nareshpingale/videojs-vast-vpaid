@@ -4,6 +4,7 @@ var VASTError = require('./VASTError');
 var VASTResponse = require('./VASTResponse');
 var vastUtil = require('./vastUtil');
 var utilities = require('../../utils/utilityFunctions');
+var logger = require ('../../utils/consoleLogger');
 
 function VASTTracker(assetURI, vastResponse) {
   if (!(this instanceof VASTTracker)) {
@@ -129,7 +130,7 @@ VASTTracker.prototype.trackProgress = function trackProgress(newProgressInMs) {
   function canBeTracked(quartile, progress) {
     var quartileTime = quartile.time;
     //We only fire the quartile event if the progress is bigger than the quartile time by 5 seconds at most.
-    console.log("canBeTracked: ",progress,quartileTime, progress >= quartileTime , progress <= (quartileTime + 10000));
+    logger.debug("canBeTracked: ",progress,quartileTime, progress >= quartileTime , progress <= (quartileTime + 10000));
     return progress >= quartileTime && progress <= (quartileTime + 10000);
   }
 
