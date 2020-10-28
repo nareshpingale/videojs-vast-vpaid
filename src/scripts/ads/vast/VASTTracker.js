@@ -110,11 +110,9 @@ VASTTracker.prototype.trackProgress = function trackProgress(newProgressInMs) {
 
     if (!firstQuartile.tracked) {
       trackQuartile('firstQuartile', progress);
-    } 
-    if (!midpoint.tracked) {
+    } else if (!midpoint.tracked) {
       trackQuartile('midpoint', progress);
-    } 
-    if (!thirdQuartile.tracked){
+    } else if (!thirdQuartile.tracked){
       trackQuartile('thirdQuartile', progress);
     }
 
@@ -131,7 +129,7 @@ VASTTracker.prototype.trackProgress = function trackProgress(newProgressInMs) {
   function canBeTracked(quartile, progress) {
     var quartileTime = quartile.time;
     //We only fire the quartile event if the progress is bigger than the quartile time by 5 seconds at most.
-    return progress >= quartileTime && progress <= (quartileTime + 5000);
+    return progress >= quartileTime ;
   }
 
   function trackProgressEvents(progress) {
