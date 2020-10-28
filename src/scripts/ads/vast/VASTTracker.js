@@ -120,6 +120,8 @@ VASTTracker.prototype.trackProgress = function trackProgress(newProgressInMs) {
     /*** Local function ***/
     function trackQuartile(quartileName, progress){
       var quartile = quartiles[quartileName];
+      logger.debug(quartileName);
+      logger.debug(progress);
       logger.debug(quartile);
       if(canBeTracked(quartile, progress)){
         quartile.tracked = true;
@@ -131,7 +133,7 @@ VASTTracker.prototype.trackProgress = function trackProgress(newProgressInMs) {
   function canBeTracked(quartile, progress) {
     var quartileTime = quartile.time;
     //We only fire the quartile event if the progress is bigger than the quartile time by 5 seconds at most.
-    logger.debug("canBeTracked: "+progress+" | "+quartileTime+" : "+ progress >= quartileTime+" "+(progress <= (quartileTime + 10000)));
+    logger.debug("canBeTracked: "+progress+" | "+quartileTime+" : "+( progress >= quartileTime)+" "+(progress <= (quartileTime + 10000)));
     return progress >= quartileTime    && progress <= (quartileTime + 10000);
   }
 
